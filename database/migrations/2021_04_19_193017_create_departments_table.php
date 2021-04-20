@@ -18,7 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('department_name');
             //foregn key company
             $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companys');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->timestamps();
         });
     }
