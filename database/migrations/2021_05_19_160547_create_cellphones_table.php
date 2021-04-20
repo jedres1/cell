@@ -19,6 +19,12 @@ class CreateCellphonesTable extends Migration
             $table->string('marca');
             $table->string('imei');
             $table->string('number');
+            //foreign key department
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments');
+            //foreign key company
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies');
             //assined employee
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');

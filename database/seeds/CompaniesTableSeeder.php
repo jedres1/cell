@@ -11,8 +11,8 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run()
     {
-        Company::create(['company_name'=> 'PUBLIMOVIL']);
-        Company::create(['company_name'=> 'PUBLIMAGEN']);
-        Company::create(['company_name'=> 'URBMAN']);
+        Company::create(['company_name' => 'PUBLIMOVIL']);
+        Company::create(['company_name' => 'PUBLIMAGEN']);
+        Company::create(['company_name' => 'URBMAN']);
     }
 }
