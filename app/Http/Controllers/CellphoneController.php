@@ -9,13 +9,20 @@ class CellphoneController extends Controller
 {
     public function index()
     {
-        return view('cellphones.index');
+        $cellphones = Cellphone::orderBy('id','desc')
+            ->with(['department','company','employee'])
+            ->get();
+
+            return $cellphones;
+            
+        return view('cellphones.index',[
+            'cellphones' => $cellphones
+        ]);
     }
 
-    public function create(Cellphone $cellphones)
+    public function create()
     {
-        $cellphones::find();
-        return view('cellphones.create',content('cellphones'));
+        return view('cellphones.create');
     }
 
     public function store( Request $request)

@@ -8,30 +8,28 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Id</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">numero</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Departamento</th>
+                <th scope="col">Empleado</th>
             </tr>
         </thead>
         <tbody>
+            @foreach ($cellphones as $cellphone)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
+                <th scope="row">{{$cellphone->id}}</th>
+                <td>{{$cellphone->model}}</td>
+                <td>{{$cellphone->marca}}</td>
+                <td>{{$cellphone->number}}</td>
+                <td>{{$cellphone->company_id}}</td>
+                <td>{{$cellphone->department_id}}</td>
+                <td>{{$cellphone->employee_id}}</td>
+            </tr>    
+            @endforeach
+            
         </tbody>
     </table>
 </div>

@@ -24,3 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cellphones', 'CellphoneController@index');
 Route::get('/cellphones/create','CellphoneController@create')->name('cellphones.create');
 Route::post('/cellphones','CellphoneController@store')->name('cellphones.store');
+Route::get('/cellphones/show', 'CellphoneController@show')->name('cellphones.show');

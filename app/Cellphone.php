@@ -18,15 +18,15 @@ class Cellphone extends Model
     'employee_id'
    ];
 
-   public function departments()
+   public function department()
    {
-      return $this->hasOne(Department::class);
+      return $this->belongsTo(Department::class);
    }
-   public function companies()
+   public function company()
    {
-      return $this->hasOne(Company::class);
+      return $this->belongsTo(Company::class);
    }
-   public function employees()
+   public function employee()
    {
       return $this->belongsTo(Employee::class);
    }
