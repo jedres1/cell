@@ -12,9 +12,10 @@ class CellphoneController extends Controller
         return view('cellphones.index');
     }
 
-    public function create()
+    public function create(Cellphone $cellphones)
     {
-        return view('cellphones.create');
+        $cellphones::find();
+        return view('cellphones.create',content('cellphones'));
     }
 
     public function store( Request $request)
@@ -27,7 +28,7 @@ class CellphoneController extends Controller
             'department' => 'required',
             'company' => 'required'
         ]);
-        $request->auth()->comapies()->departments()->employees()->create([
+        Cellphone::create([
             'imei' => $request->imei,
             'marca' => $request->brand,
             'model' => $request->model,

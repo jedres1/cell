@@ -7,7 +7,7 @@
         @csrf
         <div class="col-md-6">
           <label for="model" class="form-label" >Modelo</label>
-          <input type="text" class="form-control" name="model" id="model" value="{{ old('model') }}">
+          <input type="text" class="form-control" name="model" id="model" value="{{ old('model') }}" required>
         </div>
         <div class="col-md-6">
           <label for="imei" class="form-label" >imei</label>
