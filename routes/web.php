@@ -22,5 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cellphones', 'CellphoneController@index');
-Route::get('/cellphones/create','CellphoneController@create')->name('form');
-Route::post('/cellphones/store','CellphoneController@store')->name('guardar');
+Route::get('/cellphones/create','CellphoneController@create')->name('cellphones.create');
+Route::post('/cellphones','CellphoneController@store')->name('cellphones.store');
