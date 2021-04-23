@@ -12,8 +12,6 @@ class CellphoneController extends Controller
         $cellphones = Cellphone::orderBy('id','desc')
             ->with(['department','company','employee'])
             ->get();
-
-            return $cellphones;
             
         return view('cellphones.index',[
             'cellphones' => $cellphones

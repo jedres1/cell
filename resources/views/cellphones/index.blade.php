@@ -12,6 +12,7 @@
                 <th scope="col">Modelo</th>
                 <th scope="col">Marca</th>
                 <th scope="col">numero</th>
+                <th scope="col">imei</th>
                 <th scope="col">Empresa</th>
                 <th scope="col">Departamento</th>
                 <th scope="col">Empleado</th>
@@ -24,9 +25,10 @@
                 <td>{{$cellphone->model}}</td>
                 <td>{{$cellphone->marca}}</td>
                 <td>{{$cellphone->number}}</td>
-                <td>{{$cellphone->company_id}}</td>
-                <td>{{$cellphone->department_id}}</td>
-                <td>{{$cellphone->employee_id}}</td>
+                <td>{{$cellphone->imei}}</td>
+                <td>{{$cellphone->company->company_name}}</td>
+                <td>{{$cellphone->department->department_name}}</td>
+                <td>{{$cellphone->employee->employee_name}}</td>
             </tr>    
             @endforeach
             
