@@ -14,8 +14,7 @@ class Cellphone extends Model
     'imei',
     'number',
     'department_id',
-    'company_id',
-    'employee_id'
+    'company_id'
    ];
 
    public function department()
@@ -26,8 +25,5 @@ class Cellphone extends Model
    {
       return $this->belongsTo(Company::class);
    }
-   public function employee()
-   {
-      return $this->belongsTo(Employee::class);
-   }
+  
 }

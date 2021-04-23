@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Cellphone;
 
 class CellphonesTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class CellphonesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Cellphones::class, 20)->create();
     }
 }

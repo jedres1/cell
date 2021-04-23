@@ -16,7 +16,7 @@ class CreateCellphonesTable extends Migration
         Schema::create('cellphones', function (Blueprint $table) {
             $table->id();
             $table->string('model');
-            $table->string('marca');
+            $table->string('brand');
             $table->string('imei');
             $table->string('number');
             //foreign key department
