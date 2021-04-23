@@ -25,10 +25,6 @@ class CreateCellphonesTable extends Migration
             //foreign key company
             $table->unsignedBigInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
-            //assined employee
-            $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->timestamps();
         });
     }
 

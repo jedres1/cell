@@ -16,6 +16,7 @@
                 <th scope="col">Empresa</th>
                 <th scope="col">Departamento</th>
                 <th scope="col">Empleado</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -23,12 +24,7 @@
             <tr>
                 <th scope="row">{{$cellphone->id}}</th>
                 <td>{{$cellphone->model}}</td>
-                <td>{{$cellphone->marca}}</td>
-                <td>{{$cellphone->number}}</td>
-                <td>{{$cellphone->imei}}</td>
-                <td>{{$cellphone->company->company_name}}</td>
-                <td>{{$cellphone->department->department_name}}</td>
-                <td>{{$cellphone->employee->employee_name}}</td>
+               
             </tr>    
             @endforeach
             
