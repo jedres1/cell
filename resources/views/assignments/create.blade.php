@@ -3,7 +3,7 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <form class="row g-3" action="{{ route('cellphones.store') }}" method="POST">
+      <form class="row g-3" action="{{ route('assignments.store') }}" method="POST">
         @csrf
         <div class="col-md-6">
           <label for="model" class="form-label" >Modelo</label>
@@ -42,7 +42,7 @@
         <div class="col-6">
           <button type="submit" class="btn btn-primary">Guardar</button>
         </div class="col-6">
-        <a href="{{ url('/cellphones') }}" class="btn btn-primary">Cancelar</a>
+        <a href="{{ url('/assignments') }}" class="btn btn-primary">Cancelar</a>
     </form>  
     </div>
   </div>

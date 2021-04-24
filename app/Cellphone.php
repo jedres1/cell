@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Department;
 use App\Company;
 use App\User;
+
 class Cellphone extends Model
 {
    protected $fillable = [
     'model',
-    'marca',
+    'brand',
     'imei',
     'number',
     'department_id',

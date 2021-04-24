@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\AssigmentCellphoneEmployees;
+use App\AssignmentCellphoneEmployee;
 
-class AssigmentCellphoneEmployeesTableSeeder extends Seeder
+class AssignmentCellphoneEmployeesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

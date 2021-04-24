@@ -12,6 +12,6 @@ class CellphonesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Cellphones::class, 20)->create();
+        factory(Cellphone::class, 20)->create();
     }
 }

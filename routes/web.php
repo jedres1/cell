@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/cellphones', 'CellphoneController@index');
-Route::get('/cellphones/create','CellphoneController@create')->name('cellphones.create');
-Route::post('/cellphones','CellphoneController@store')->name('cellphones.store');
-Route::get('/cellphones/show', 'CellphoneController@show')->name('cellphones.show');
+Route::get('/assignments', 'AssignmentCellphoneEmployeeController@index');
+Route::get('/assignments/create','AssignmentCellphoneEmployeeController@create')->name('assignments.create');
+Route::post('/assgnments','AssignmentCellphoneEmployeeController@store')->name('assignments.store');
+//Route::get('/cellphones/show', 'CellphoneController@show')->name('cellphones.show');

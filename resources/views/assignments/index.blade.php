@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div>
-<a class='btn btn-info' href="{{ url('cellphones/create') }}">Add Cellphones</a>
+<a class='btn btn-info' href="{{ url('assignments/create') }}">Add Cellphones</a>
     </div>
     <br>
     <table class="table">
@@ -20,11 +20,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($cellphones as $cellphone)
+            @foreach ($assignments as $assignment)
             <tr>
-                <th scope="row">{{$cellphone->id}}</th>
-                <td>{{$cellphone->model}}</td>
-               
+                <th scope="row">{{$assignment->id}}</th>
+                <td>{{$assignment->cellphone->model}}</td>
+                <td>{{$assignment->cellphone->brand}}</td>
+                <td>{{$assignment->cellphone->number}}</td>
+                <td>{{$assignment->cellphone->imei}}</td>
+                <td>{{$assignment->cellphone->company->company_name}}</td>
+                <td>{{$assignment->cellphone->department->department_name}}</td>
+                <td>{{$assignment->employee->employee_name}}</td>
+                <td>{{$assignment->status}}</td>
             </tr>    
             @endforeach
             
