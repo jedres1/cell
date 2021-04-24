@@ -23,7 +23,7 @@ class AssignmentCellphoneEmployeeController extends Controller
     {
 
         AssignmentCellphoneEmployee::create([
-            'cellphone_id' => $request->company_id,
+            'cellphone_id' => $request->cellphone_id,
             'employee_id' => $request->employee_id,
             'status' => $request->status
         ]);
