@@ -10,7 +10,7 @@ class CellphoneController extends Controller
     public function index()
     {
         $cellphones = Cellphone::orderBy('id','desc')
-            ->with(['department','company','employee'])
+            ->with(['department','company'])
             ->get();
             
         return view('cellphones.index',[
@@ -39,8 +39,7 @@ class CellphoneController extends Controller
             'model' => $request->model,
             'number' => $request->number,
             'department_id' => $request->department,
-            'company_id' => $request->company,
-            'employee_id' => $request->employee
+            'company_id' => $request->company
         ]);
         return redirect('/cellphones'); 
     }
