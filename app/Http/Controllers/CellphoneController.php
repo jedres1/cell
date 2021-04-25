@@ -30,13 +30,13 @@ class CellphoneController extends Controller
             'brand' =>'required',
             'model' =>'required',
             'number' => 'required',
-            'department' => 'required',
-            'company' => 'required'
+            'department_id' => 'required',
+            'company_id' => 'required'
         ]);
         
         Cellphone::create([
             'imei' => $request->imei,
-            'marca' => $request->brand,
+            'brand' => $request->brand,
             'model' => $request->model,
             'number' => $request->number,
             'department_id' => $request->department_id,

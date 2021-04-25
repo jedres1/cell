@@ -31,14 +31,13 @@
           <br>
         </div>
         <br>
-        <div class="col-6">
+        <div class="col-6 m3  ">
           <button type="submit" class="btn btn-primary">Guardar</button>
-        </div class="col-6">
-          <a href="{{ url('/assignments') }}" class="btn btn-primary">Cancelar</a>
+        </div>
+        <a href="{{ url('/cellphones') }}" class="btn btn-primary">Cancelar</a>
       </form>  
     </div>
   </div>
-    
 </div>
 
 @endsection

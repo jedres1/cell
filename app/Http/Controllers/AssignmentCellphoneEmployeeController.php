@@ -9,9 +9,9 @@ class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
     {
-        $assignments=AssignmentCellphoneEmployee::with(['cellphone','employee'])->get();//orderBy('id','desc')
-            //->with(['cellphone','employee'])
-            //->get();
+        $assignments=AssignmentCellphoneEmployee::orderBy('id','desc')
+            ->with(['cellphone','employee'])
+            ->get();
         //return $assignments;
         return view('assignments.index',['assignments'=>$assignments]);
     }

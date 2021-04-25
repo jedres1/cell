@@ -20,7 +20,7 @@
         <br>
         <div class="col-6 m3">
           <button type="submit" class="btn btn-primary">Guardar</button>
-        </div class="col-6">
+        </div>
         <a href="{{ url('/employees') }}" class="btn btn-primary">Cancelar</a>
     </form>  
     </div>
