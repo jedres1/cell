@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cellphone;
+use App\Company;
 
 class CellphoneController extends Controller
 {
@@ -20,7 +21,8 @@ class CellphoneController extends Controller
 
     public function create()
     {
-        return view('cellphones.create');
+        $companies=Company::all();
+        return view('cellphones.create',compact(['companies',$companies]));
     }
 
     public function store( Request $request)

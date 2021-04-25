@@ -23,12 +23,22 @@
         </div>
         <div class="col-md-6">
           <label for="company_id" class="form-label" >Empresa Titular</label>
-          <input type="text" class="form-control" name="company_id" id="company_id" value="{{old('company_id')}}"required>
+            <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="company_id" id="company_id" value="{{old('company_id')}}">
+              <option selected>Seleccione una Empresa</option>
+              @foreach ( $companies as $company )
+                <option value="{{$company->id}}">{{$company->company_name}}</option>
+              @endforeach
+              
+            </select>
         </div>
         <div class="col-md-6">
           <label for="department_id" class="form-label" >Departamento Asignado</label>
-          <input type="text" class="form-control" name="department_id" id="department_id" value="{{old('department_id')}}"required>
-          <br>
+          <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="department_id" id="department_id">
+            <option selected>Seleccione un departmamento</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
         </div>
         <br>
         <div class="col-6 m3  ">
@@ -39,5 +49,7 @@
     </div>
   </div>
 </div>
-
 @endsection
+<script>
+
+</script>
