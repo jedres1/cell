@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.panel')
 @section('content')
 <div class="container">
     <div>
 <a class='btn btn-info' href="{{ url('employees/create') }}">Add Employee</a>
     </div>
     <br>
-    <table class="table">
+    <table class="table  table-hover table-dark">
         <thead>
             <tr>
                 <th scope="col">Id</th>
