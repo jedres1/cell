@@ -14,6 +14,7 @@ class Cellphone extends Model
     'brand',
     'imei',
     'number',
+    'status',
     'department_id',
     'company_id'
    ];

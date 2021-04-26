@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Employee;
+use App\Company;
+use App\Department;
 
 class EmployeeController extends Controller
 {
@@ -20,7 +22,9 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        return view('employees.create');
+        $companies = Company::all();
+        $departments = Department::all();
+        return view('employees.create',compact('companies','departments'));
     }
 
     public function store( Request $request)

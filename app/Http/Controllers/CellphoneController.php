@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cellphone;
 use App\Company;
+use App\Department; 
 
 class CellphoneController extends Controller
 {
@@ -22,7 +23,8 @@ class CellphoneController extends Controller
     public function create()
     {
         $companies=Company::all();
-        return view('cellphones.create',compact(['companies',$companies]));
+        $departments=Department::all();
+        return view('cellphones.create',compact('companies','departments'));
     }
 
     public function store( Request $request)
@@ -32,6 +34,7 @@ class CellphoneController extends Controller
             'brand' =>'required',
             'model' =>'required',
             'number' => 'required',
+            //status
             'department_id' => 'required',
             'company_id' => 'required'
         ]);
@@ -41,6 +44,7 @@ class CellphoneController extends Controller
             'brand' => $request->brand,
             'model' => $request->model,
             'number' => $request->number,
+            'status' => 1,
             'department_id' => $request->department_id,
             'company_id' => $request->company_id
         ]);

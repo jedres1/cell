@@ -35,9 +35,9 @@
           <label for="department_id" class="form-label" >Departamento Asignado</label>
           <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="department_id" id="department_id">
             <option selected>Seleccione un departmamento</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            @foreach ( $departments as $department )
+                <option value="{{$department->id}}">{{$department->department_name}}</option>
+            @endforeach
           </select>
         </div>
         <br>

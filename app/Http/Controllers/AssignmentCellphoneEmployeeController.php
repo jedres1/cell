@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AssignmentCellphoneEmployee;
-
+use App\Cellphone;
+use App\Employee;
 class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
@@ -16,8 +17,10 @@ class AssignmentCellphoneEmployeeController extends Controller
         return view('assignments.index',['assignments'=>$assignments]);
     }
     public function create()
-    {
-        return view('assignments.create');
+    {   
+        $cellphones=Cellphone::where('status',0)->get();
+        $employees=Employee::all();
+        return view('assignments.create',compact('cellphones','employees'));
     }
     public function store(Request $request)
     {

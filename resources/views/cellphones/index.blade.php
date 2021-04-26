@@ -15,6 +15,7 @@
                 <th scope="col">imei</th>
                 <th scope="col">Empresa</th>
                 <th scope="col">Departamento</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,7 @@
                 <td>{{$cellphone->imei}}</td>
                 <td>{{$cellphone->company->company_name}}</td>
                 <td>{{$cellphone->department->department_name}}</td>
-                
+                <td>{{$cellphone->status}}</td>
             </tr>    
             @endforeach
             

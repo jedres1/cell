@@ -7,15 +7,29 @@
         @csrf
         <div class="col-md-6">
           <label for="cellphone_id" class="form-label" >Celular</label>
-          <input type="text" class="form-control" name="cellphone_id" id="cellphone_id" value="{{ old('cellphone_id') }}" required>
+          <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="cellphone_id" id="cellphone_id">
+            <option selected>Seleccione Celular</option>
+            @foreach ( $cellphones as $cellphone )
+                <option value="{{$cellphone->id}}">{{ $cellphone->brand }}</option>
+            @endforeach
+          </select>
         </div>
-        <div class="col-md-2">
-          <label for="employee_id" class="form-label" >Empleado</label>
-          <input type="text" class="form-control" name="employee_id" id="employee_id" value="{{old('employee_id')}}">
+        <div class="col-md-3">
+          <label for="employee_id" class="form-label" >Empleado Asignado</label>
+          <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="employee_id" id="employee_id">
+            <option selected>Seleccione un Empleado</option>
+            @foreach ( $employees as $employee )
+                <option value="{{$employee->id}}">{{$employee->employee_name}}</option>
+            @endforeach
+          </select>
         </div>
-        <div class="col-md-2">
-          <label for="status" class="form-label" >Estatus</label>
-          <input type="text" class="form-control" name="status" id="status" value="{{old('status')}}">
+        <div class="col-md-3">
+          <label for="status" class="form-label" >Estatus Asignacion</label>
+          <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status">
+            <option selected>Seleccione estado</option>
+            <option value="1">Entregado</option>
+            <option value="2">Pendiente</option>
+          </select>
         </div>
         <br>
         <div class="col-6">
