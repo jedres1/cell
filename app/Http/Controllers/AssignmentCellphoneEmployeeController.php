@@ -18,7 +18,7 @@ class AssignmentCellphoneEmployeeController extends Controller
     }
     public function create()
     {   
-        $cellphones=Cellphone::where('status',0)->get();
+        $cellphones=Cellphone::where('status',1)->get();
         $employees=Employee::all();
         return view('assignments.create',compact('cellphones','employees'));
     }
