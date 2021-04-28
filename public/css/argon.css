@@ -15046,7 +15046,7 @@ button.bg-lighter:focus
 
 .bg-gradient-primary
 {
-    background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+    background: linear-gradient(87deg, #5ee4ac 0, #65c3d8e8 100%) !important;
 }
 
 .bg-gradient-secondary
@@ -15181,7 +15181,7 @@ button.bg-lighter:focus
 
 .bg-translucent-primary
 {
-    background-color: rgba(63, 87, 223, .6) !important;
+    background-color: rgba(63, 199, 223, 0.6) !important;
 }
 
 a.bg-translucent-primary:hover,

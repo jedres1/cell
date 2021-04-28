@@ -5,10 +5,9 @@
         <a class='btn btn-info' href="{{ url('assignments/create') }}">Add Assignment</a>
     </div>
     <br>
-    <table class="table table-dark">
+    <table class="table table-hover table-dark">
         <thead>
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Modelo</th>
                 <th scope="col">Marca</th>
                 <th scope="col">numero</th>
@@ -22,7 +21,6 @@
         <tbody>
             @foreach ($assignments as $assignment)
             <tr>
-                <th scope="row">{{$assignment->id}}</th>
                 <td>{{$assignment->cellphone->model}}</td>
                 <td>{{$assignment->cellphone->brand}}</td>
                 <td>{{$assignment->cellphone->number}}</td>
@@ -30,11 +28,12 @@
                 <td>{{$assignment->cellphone->company->company_name}}</td>
                 <td>{{$assignment->cellphone->department->department_name}}</td>
                 <td>{{$assignment->employee->employee_name}}</td>
-                <td>{{$assignment->status}}</td>
+                <td>{{$assignment->status==1?"Entregado":"Pendiente"}}</td>
             </tr>    
             @endforeach
             
         </tbody>
     </table>
+    {{$assignments->links()}}
 </div>
 @endsection

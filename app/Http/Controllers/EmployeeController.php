@@ -13,7 +13,7 @@ class EmployeeController extends Controller
     {
         $employees = Employee::orderBy('id','desc')
             ->with(['department','company'])
-            ->get();
+            ->paginate(10);
             
         return view('employees.index',[
             'employees' => $employees

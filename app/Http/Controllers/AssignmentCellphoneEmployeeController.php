@@ -12,7 +12,7 @@ class AssignmentCellphoneEmployeeController extends Controller
     {
         $assignments=AssignmentCellphoneEmployee::orderBy('id','desc')
             ->with(['cellphone','employee'])
-            ->get();
+            ->paginate(10);
         //return $assignments;
         return view('assignments.index',['assignments'=>$assignments]);
     }

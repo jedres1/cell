@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Response;
 use App\Cellphone;
 use App\Company;
 use App\Department; 
@@ -13,7 +15,7 @@ class CellphoneController extends Controller
     {
         $cellphones = Cellphone::orderBy('id','desc')
             ->with(['department','company'])
-            ->get();
+            ->paginate(10);
             
         return view('cellphones.index',[
             'cellphones' => $cellphones
