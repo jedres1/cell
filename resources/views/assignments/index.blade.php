@@ -16,6 +16,7 @@
                 <th scope="col">Departamento</th>
                 <th scope="col">Empleado</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                 <td>{{$assignment->cellphone->department->department_name}}</td>
                 <td>{{$assignment->employee->employee_name}}</td>
                 <td>{{$assignment->status==1?"Entregado":"Pendiente"}}</td>
+                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-send text-yellow"></i></a></td>
             </tr>    
             @endforeach
             

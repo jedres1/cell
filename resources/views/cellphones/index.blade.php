@@ -15,6 +15,7 @@
                 <th scope="col">Empresa</th>
                 <th scope="col">Departamento</th>
                 <th scope="col">Estado</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                 <td>{{$cellphone->company->company_name}}</td>
                 <td>{{$cellphone->department->department_name}}</td>
                 <td>{{$cellphone->status==1?"Asignado":"Disponible"}}</td>
+                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-mobile-button text-yellow"></i></a></td>
             </tr>    
             @endforeach
             
