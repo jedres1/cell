@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <div>
-    <a class='btn btn-info' href="{{ url('cellphones/create') }}">Add Cellphones</a>
+        <a class='btn btn-info' href="{{ url('cellphones/create') }}">Add Cellphones</a>
     </div>
     <br>
     <table class="table table-hover table-dark">
@@ -28,7 +28,7 @@
                 <td>{{$cellphone->company->company_name}}</td>
                 <td>{{$cellphone->department->department_name}}</td>
                 <td>{{$cellphone->status==1?"Asignado":"Disponible"}}</td>
-                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-mobile-button text-yellow"></i></a></td>
+                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-mobile-button text-dark"></i></a></td>
             </tr>    
             @endforeach
             

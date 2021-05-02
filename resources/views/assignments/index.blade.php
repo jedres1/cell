@@ -21,17 +21,27 @@
         </thead>
         <tbody>
             @foreach ($assignments as $assignment)
+            
             <tr>
-                <td>{{$assignment->cellphone->model}}</td>
+                <td>{{$assignment->cellphone->model}}</td>   
                 <td>{{$assignment->cellphone->brand}}</td>
                 <td>{{$assignment->cellphone->number}}</td>
                 <td>{{$assignment->cellphone->imei}}</td>
                 <td>{{$assignment->cellphone->company->company_name}}</td>
                 <td>{{$assignment->cellphone->department->department_name}}</td>
                 <td>{{$assignment->employee->employee_name}}</td>
-                <td>{{$assignment->status==1?"Entregado":"Pendiente"}}</td>
-                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-send text-yellow"></i></a></td>
-            </tr>    
+                <td>{{$assignment->status==1?"Activo":"Entrega Pendiente"}}</td>
+                <td>
+                    <a class="btn btn-icon btn-primary btn-sm" href="{{route('assignments.show', $assignment)}}">
+                        <i class="ni ni-send text-dark"></i>
+                    </a>
+                    <a class="btn btn-icon btn-primary btn-sm" href="#">
+                        <i class="ni ni-archive-2 text-dark"></i>
+                    </a>    
+                </td>
+                
+            </tr>
+       
             @endforeach
             
         </tbody>

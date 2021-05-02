@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Response;
 use App\Cellphone;
 use App\Company;
 use App\Department; 
+use App\AssignmentCellphoneEmployee;
 
 class CellphoneController extends Controller
 {
@@ -46,10 +47,19 @@ class CellphoneController extends Controller
             'brand' => $request->brand,
             'model' => $request->model,
             'number' => $request->number,
-            'status' => 1,
+            'status' => 0,
             'department_id' => $request->department_id,
             'company_id' => $request->company_id
         ]);
         return redirect('/cellphones'); 
+    }
+    public function update($id)
+    {
+        /*$cell = Cellphone::find($id);
+        $cell->update([
+            'status'=>2
+        ]);
+        return redirect('/assignments');*/
+        //return redirect('/assignments');
     }
 }

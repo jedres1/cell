@@ -23,11 +23,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route assignments
 Route::get('/assignments', 'AssignmentCellphoneEmployeeController@index');
 Route::get('/assignments/create','AssignmentCellphoneEmployeeController@create')->name('assignments.create');
+Route::get('/assignments/{id}','AssignmentCellphoneEmployeeController@show')->name('assignments.show');
+Route::patch('/assignments/update/{id}','AssignmentCellphoneEmployeeController@update')->name('assignments.update');
 Route::post('/assignments','AssignmentCellphoneEmployeeController@store')->name('assignments.store');
 //Routes cellphone
 Route::get('/cellphones', 'CellphoneController@index');
 Route::get('/cellphones/create','CellphoneController@create')->name('cellphones.create');
 Route::post('/cellphones','CellphoneController@store')->name('cellphones.store');
+Route::patch('/cellphones/update/{id}','CellphoneController@update')->name('cellphones.update');
 //Route employee
 Route::get('/employees', 'EmployeeController@index');
 Route::get('/employees/create','EmployeeController@create')->name('employees.create');

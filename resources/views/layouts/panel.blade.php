@@ -47,7 +47,7 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{{ asset('img/theme/team-1-800x800.jpg')}}">
+                <img alt="Image placeholder" src="{{ asset('img/theme/man.png')}}">
               </span>
             </div>
           </a>
@@ -127,7 +127,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/assignments">
-              <i class="ni ni-badge text-yellow"></i> Asignaciones
+              <i class="ni ni-badge text-blue"></i> Asignaciones
             </a>
           </li>
           <li class="nav-item">
@@ -152,7 +152,7 @@
     <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
       <div class="container-fluid">
         <!-- Brand -->
-        <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" href="/">Cellphones</a>
+        <a class="h4 mb-0 text-darkblue text-uppercase d-none d-lg-inline-block" href="/">Cellphones</a>
         <!-- Form -->
         <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
           <div class="form-group mb-0">
@@ -193,7 +193,7 @@
       </div>
     </nav>
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-5">
+    <div class="header bg-gradient-primary2 pb-8 pt-5 pt-md-5">
     </div>
     <!-- Page content -->
     <div class="container-fluid mt--5">

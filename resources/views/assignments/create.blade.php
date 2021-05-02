@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
   <div class="card">
-    <div class="card-body">
+    <div class="card-body shadow-sm">
       <form class="row g-3" action="{{ route('assignments.store') }}" method="POST">
         @csrf
         <div class="col-md-6">
@@ -27,8 +27,8 @@
           <label for="status" class="form-label" >Estatus Asignacion</label>
           <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status">
             <option selected>Seleccione estado</option>
-            <option value="1">Entregado</option>
-            <option value="2">Pendiente</option>
+            <option value="0">Entrega Pendiente</option>
+            <option value="1">Activo</option>
           </select>
         </div>
         <br>

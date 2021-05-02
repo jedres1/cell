@@ -13,7 +13,8 @@ class AssignmentCellphoneEmployee extends Model
         'employee_id',
         'status'
     ];
-    public function cellphone()
+
+   public function cellphone()
    {
       return $this->belongsTo(Cellphone::class);
    }

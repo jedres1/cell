@@ -20,7 +20,7 @@
                 <td>{{$employee->employee_name}}</td>
                 <td>{{$employee->company->company_name}}</td>
                 <td>{{$employee->department->department_name}}</td>
-                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-circle-08 text-yellow"></i></a></td>
+                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-circle-08 text-dark"></i></a></td>
             </tr>    
             @endforeach
             

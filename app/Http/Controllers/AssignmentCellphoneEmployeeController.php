@@ -10,7 +10,8 @@ class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
     {
-        $assignments=AssignmentCellphoneEmployee::orderBy('id','desc')
+        $assignments=AssignmentCellphoneEmployee::where('status',1)
+            ->orderBy('id','desc')
             ->with(['cellphone','employee'])
             ->paginate(10);
         //return $assignments;
@@ -18,7 +19,7 @@ class AssignmentCellphoneEmployeeController extends Controller
     }
     public function create()
     {   
-        $cellphones=Cellphone::where('status',1)->get();
+        $cellphones=Cellphone::where('status','<>',1)->get();
         $employees=Employee::all();
         return view('assignments.create',compact('cellphones','employees'));
     }
@@ -30,6 +31,22 @@ class AssignmentCellphoneEmployeeController extends Controller
             'employee_id' => $request->employee_id,
             'status' => $request->status
         ]);
-        return redirect("/assignments");
+        $cell=Cellphone::find($request->cellphone_id);
+        $cell->update(['status'=>1]);
+        return redirect("/assignments");    
     }
+    public function show($id)
+    {
+       $assignment=AssignmentCellphoneEmployee::where('id',$id)->with(['cellphone','employee'])->get();
+       return view('assignments.show',compact('assignment'));
+        
+    }
+   public function update($id)
+   {
+       $assignment=AssignmentCellphoneEmployee::find($id);
+       $assignment->update(['status'=>2]);
+       $cell=Cellphone::find($assignment->cellphone_id);
+       $cell->update(['status'=>2]);
+       return redirect('/assignments');
+   }
 }

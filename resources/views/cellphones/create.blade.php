@@ -42,9 +42,9 @@
         </div>
         <br>
         <div class="col-6 m3  ">
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-info">Guardar</button>
         </div>
-        <a href="{{ url('/cellphones') }}" class="btn btn-primary">Cancelar</a>
+        <a href="{{ url('/cellphones') }}" class="btn btn-danger float-right">Cancelar</a>
       </form>  
     </div>
   </div>
