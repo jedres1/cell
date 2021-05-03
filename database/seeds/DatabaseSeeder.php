@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentsTableSeeder::class);
         $this->call(EmployeesTableSeeder::class);
         $this->call(CellphonesTableSeeder::class);
-        $this->call(AssignmentCellphoneEmployeesTableSeeder::class);
+        //$this->call(AssignmentCellphoneEmployeesTableSeeder::class);
     }
 }

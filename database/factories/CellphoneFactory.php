@@ -11,7 +11,7 @@ $factory->define(Cellphone::class, function (Faker $faker) {
         "imei" => $faker->numberBetween(100000000,99999999),
         "brand" => $faker->company(),
         "number" => $faker->phoneNumber(),
-        "status" => $faker->numberBetween(0,1),
+        "status" => 0,
         "company_id" => $faker->numberBetween(1,3),
         "department_id" => $faker->numberBetween(1,10)
     ];
