@@ -49,4 +49,33 @@ class AssignmentCellphoneEmployeeController extends Controller
        $cell->update(['status'=>2]);
        return redirect('/assignments');
    }
+   public function download($id)
+   {
+    $assignment=AssignmentCellphoneEmployee::where('id',$id)->with(['cellphone','employee'])->get();
+       
+    try {
+            $template = new \PhpOffice\PhpWord\TemplateProcessor('docs\acuerdo.docx');
+            $assignment=AssignmentCellphoneEmployee::find($id);//where('id',$id)->with(['cellphone','employee'])->get();
+            $template->setValue('name',$assignment->employee->employee_name);
+            $template->setValue('model',$assignment->cellphone->model);
+            $template->setValue('company',$assignment->cellphone->company->company_name);
+            $template->setValue('employee','Representante');
+            $template->setValue('department',$assignment->employee->department->department_name);
+            $template->setValue('number',$assignment->cellphone->number);
+            $template->setValue('serial','aefa323');
+            $template->setValue('brand',$assignment->cellphone->brand);
+            $template->setValue('note','se entrega nuevo');
+            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+            $template->saveAs($tempFile);
+        
+            $headers = [
+                "Content-Type: application\octet-stream",
+            ];
+            return response()->download($tempFile,'Nombre_documento.docx',$headers)->deleteFileAfterSend(true);
+        
+        } catch (\PhpOffice\PhpWord\Exception\Exception $e) {
+            return back($e->getCode());
+        }
+        
+   }
 }

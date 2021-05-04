@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\AssignmentCellphoneEmployee;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +35,5 @@ Route::patch('/cellphones/update/{id}','CellphoneController@update')->name('cell
 Route::get('/employees', 'EmployeeController@index');
 Route::get('/employees/create','EmployeeController@create')->name('employees.create');
 Route::post('/employees','EmployeeController@store')->name('employees.store');
+//Route Document
+Route::get('/download/{id}','AssignmentCellphoneEmployeeController@download' )->name('download.acuerdo');
