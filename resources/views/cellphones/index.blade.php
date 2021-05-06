@@ -23,7 +23,7 @@
             <tr>
                 <td>{{$cellphone->model}}</td>
                 <td>{{$cellphone->brand}}</td>
-                <td>{{$cellphone->number}}</td>
+                <td>{{$cellphone->number->number}}</td>
                 <td>{{$cellphone->imei}}</td>
                 <td>{{$cellphone->company->company_name}}</td>
                 <td>{{$cellphone->department->department_name}}</td>

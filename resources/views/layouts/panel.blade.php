@@ -115,6 +115,11 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/numbers">
+              <i class="ni ni-badge text-blue"></i> Numeros
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ url('/cellphones') }}">
               <i class="ni ni-mobile-button text-blue"></i> Celulares
             </a>

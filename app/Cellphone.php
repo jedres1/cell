@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Department;
 use App\Company;
+use App\Number;
 use App\User;
 
 class Cellphone extends Model
@@ -13,7 +14,7 @@ class Cellphone extends Model
     'model',
     'brand',
     'imei',
-    'number',
+    'number_id',
     'status',
     'department_id',
     'company_id'
@@ -27,5 +28,8 @@ class Cellphone extends Model
    {
       return $this->belongsTo(Company::class);
    }
-  
+   public function number()
+   {
+      return $this->belongsTo(Number::class);
+   }
 }

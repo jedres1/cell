@@ -20,6 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Route number
+Route::get('/numbers','NumberController@index')->name('numbers.index');
+Route::get('/numbers/create','NumberController@create')->name('numbers.create');
+Route::post('/numbers/store','NumberController@store')->name('numbers.store');
+
 //Route assignments
 Route::get('/assignments', 'AssignmentCellphoneEmployeeController@index');
 Route::get('/assignments/create','AssignmentCellphoneEmployeeController@create')->name('assignments.create');

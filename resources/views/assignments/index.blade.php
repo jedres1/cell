@@ -34,10 +34,7 @@
                 <td>
                     <a class="btn btn-icon btn-primary btn-sm" href="{{route('assignments.show', $assignment)}}">
                         <i class="ni ni-send text-dark"></i>
-                    </a>
-                    <a class="btn btn-icon btn-primary btn-sm" href="{{route('download.acuerdo',$assignment->id)}}">
-                        <i class="ni ni-archive-2 text-dark"></i>
-                    </a>    
+                    </a>  
                 </td>
                 
             </tr>

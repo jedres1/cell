@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\AssignmentCellphoneEmployee;
 use App\Cellphone;
 use App\Employee;
+
 class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()

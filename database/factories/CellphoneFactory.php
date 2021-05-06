@@ -10,9 +10,9 @@ $factory->define(Cellphone::class, function (Faker $faker) {
         'model' => $faker->colorName(),
         "imei" => $faker->numberBetween(100000000,99999999),
         "brand" => $faker->company(),
-        "number" => $faker->phoneNumber(),
+        "number_id" => $faker->unique()->randomDigit,
         "status" => 0,
         "company_id" => $faker->numberBetween(1,3),
-        "department_id" => $faker->numberBetween(1,10)
+        "department_id" => $faker->numberBetween(1,8)
     ];
 });

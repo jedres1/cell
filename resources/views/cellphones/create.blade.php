@@ -18,8 +18,13 @@
           <input type="text" class="form-control" name="imei" id="imei" value="{{old('imei')}}"required>
         </div>
         <div class="col-md-6">
-          <label for="number" class="form-label" >number</label>
-          <input type="text" class="form-control" name="number" id="number" value="{{old('number')}}"required>
+          <label for="number" class="form-label" >Numero</label>
+          <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="number" id="number">
+            <option selected>Seleccione un Numero</option>
+            @foreach ( $numbers as $number )
+                <option value="{{$number->id}}">{{$number->number}}</option>
+            @endforeach
+          </select>
         </div>
         <div class="col-md-6">
           <label for="company_id" class="form-label" >Empresa Titular</label>

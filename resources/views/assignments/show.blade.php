@@ -17,14 +17,18 @@
         <li class="list-group-item border-0 mb-3 shadow-sm">Acuerdo en Estado: {{ $item->cellphone->status==1?'Activo':'Pendiente' }}</li>
         @endforeach
     </ul>
-    <div class="form-group"> 
-        <a class="btn btn-info" href="{{url('/assignments')}}">Regresar</a>           
-        <form method="POST" action="{{route('assignments.update',$item->id)}}">
+    <div class="form-row"> 
+        <div class="col-md-3 mb-3">
+            <a class="btn btn-success" href="{{url('/assignments')}}">Regresar</a>
+        </div>     
+        <div class="col-md-3 mb-3">
+            <a class="btn btn-warning" href="{{route('download.acuerdo',$item->id)}}">Acuerdo <i class="ni ni-archive-2 text-white"></i></a>
+        </div>      
+        <form class="col-md-3 mb-3" method="POST" action="{{route('assignments.update',$item->id)}}">
             @csrf @method('PATCH')
-            <button type="submit" class="btn btn-danger float-right" >Anular</button>
+            <button type="submit" class="btn btn-danger" >Desasignar</button>
         </form>
     </div>
-    
 </table>
 </div>
 @endsection
