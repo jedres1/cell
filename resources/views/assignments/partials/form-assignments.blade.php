@@ -25,6 +25,10 @@
             <option value="1">Activo</option>
           </select>
         </div>
+        <div class="col-12 m3">
+          <label for="note" class="form-label" >Nota</label>
+          <input type="text" class="form-control" name="note" id="note" value="{{ old('note',$assignment->note) }}" required>
+        </div>
         <br>
         <div class="col-6 m3">
           <button type="submit" class="btn btn-primary">{{$btnText}}</button>
