@@ -26,46 +26,69 @@ class CellphoneController extends Controller
 
     public function create()
     {
+        $cellphone =new Cellphone();
         $companies=Company::all();
         $departments=Department::all();
         $numbers=Number::where('status','<>',1)->get();
-        return view('cellphones.create',compact('companies','departments','numbers'));
+        return view('cellphones.create',compact('companies','departments','numbers','cellphone'));
     }
 
     public function store( Request $request)
     {
-        $this->validate($request,[
+        
+        /*$this->validate($request,[
             'imei' =>'required',
             'brand' =>'required',
             'model' =>'required',
             'number_id' => 'required',
-            //status
+            'status'=>'required',
             'department_id' => 'required',
             'company_id' => 'required'
-        ]);
+        ]);*/
         
         Cellphone::create([
             'imei' => $request->imei,
             'brand' => $request->brand,
             'model' => $request->model,
             'number_id' => $request->number,
-            'status' => 0,
+            'status' => $request->status,
             'department_id' => $request->department_id,
             'company_id' => $request->company_id
         ]);
-        
         $number=Number::find($request->number);
         $number->update(['status'=>1]);
 
         return redirect('/cellphones'); 
     }
-    public function update($id)
+
+    public function edit($id)
     {
-        /*$cell = Cellphone::find($id);
-        $cell->update([
-            'status'=>2
-        ]);
-        return redirect('/assignments');*/
-        //return redirect('/assignments');
+        $cellphone = Cellphone::find($id);
+        $companies=Company::all();
+        $departments=Department::all();
+        $numbers=Number::where('status','<>',1)->get();
+        return view('cellphones.edit',compact('cellphone','numbers','companies','departments'));
     }
+    public function update(Cellphone $cellphone)
+    {
+       
+        $cellphone->update([
+            'imei' => request('imei'),
+            'brand' => request('brand'),
+            'model' => request('model'),
+            'number_id' => request('number'),
+            'status' => request('status'),
+            'department_id' => request('department_id'),
+            'company_id' => request('company_id')
+        ]);
+        $number=Number::find($cellphone->number_id);
+        $number->update(['status'=>1]);
+        return redirect('/cellphones');
+       
+    }
+    public function show(Cellphone $cellphone)
+    {
+        return view('cellphones.show',compact('cellphone'));
+    }
+    //return redirect('/assignments');
 }

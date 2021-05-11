@@ -22,9 +22,10 @@ class EmployeeController extends Controller
 
     public function create()
     {
+        $employee = new Employee();
         $companies = Company::all();
         $departments = Department::all();
-        return view('employees.create',compact('companies','departments'));
+        return view('employees.create',compact('companies','departments','employee'));
     }
 
     public function store( Request $request)
@@ -32,15 +33,37 @@ class EmployeeController extends Controller
         $this->validate($request,[
             'employee_name' =>'required',
             'company_id' =>'required',
-            'department_id' =>'required'
-            
+            'department_id' =>'required',
+            'job_title'=>'required'
         ]);
         Employee::create([
             'employee_name' => $request->employee_name,
             'company_id' => $request->company_id,
             'department_id' => $request->department_id,
+            'job_title' => $request->job_title
             
         ]);
         return redirect('/employees'); 
+    }
+    public function show(Employee $employee)
+    {
+        return view('employees.show',compact('employee'));
+    }
+    public function edit($id)
+    {   
+        $employee=Employee::find($id);
+        $companies=Company::all();
+        $departments=Department::all();
+        return view('employees.edit',compact('employee','companies','departments'));
+    }
+    public function update(Employee $employee)
+    {
+        $employee->update([
+            'employee_name' => request('employee_name'),
+            'company_id' => request('company_id'),
+            'department_id' => request('department_id'),
+            'job_title' => request('job_title')
+        ]);
+        return redirect()->route('employees.show',$employee);
     }
 }

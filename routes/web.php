@@ -23,22 +23,31 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route number
 Route::get('/numbers','NumberController@index')->name('numbers.index');
 Route::get('/numbers/create','NumberController@create')->name('numbers.create');
+Route::get('/numbers/edit/{number}','NumberController@edit')->name('numbers.edit');
+Route::get('/numbers/show/{number}','NumberController@show')->name('numbers.show');
+Route::patch('/numbers/update/{number}','NumberController@update')->name('numbers.update');
 Route::post('/numbers/store','NumberController@store')->name('numbers.store');
 
 //Route assignments
 Route::get('/assignments', 'AssignmentCellphoneEmployeeController@index');
 Route::get('/assignments/create','AssignmentCellphoneEmployeeController@create')->name('assignments.create');
-Route::get('/assignments/{id}','AssignmentCellphoneEmployeeController@show')->name('assignments.show');
-Route::patch('/assignments/update/{id}','AssignmentCellphoneEmployeeController@update')->name('assignments.update');
+Route::get('/assignments/show/{assignment}','AssignmentCellphoneEmployeeController@show')->name('assignments.show');
+Route::get('/assignments/edit/{assignment}','AssignmentCellphoneEmployeeController@edit')->name('assignments.edit');
+Route::patch('/assignments/update/{assignment}','AssignmentCellphoneEmployeeController@update')->name('assignments.update');
 Route::post('/assignments','AssignmentCellphoneEmployeeController@store')->name('assignments.store');
 //Routes cellphone
 Route::get('/cellphones', 'CellphoneController@index');
 Route::get('/cellphones/create','CellphoneController@create')->name('cellphones.create');
+Route::get('/cellphones/edit/{cellphone}','CellphoneController@edit')->name('cellphones.edit');
+Route::get('/cellphones/show/{cellphone}','CellphoneController@show')->name('cellphones.show');
+Route::patch('/cellphones/update/{cellphone}','CellphoneController@update')->name('cellphones.update');
 Route::post('/cellphones','CellphoneController@store')->name('cellphones.store');
-Route::patch('/cellphones/update/{id}','CellphoneController@update')->name('cellphones.update');
 //Route employee
 Route::get('/employees', 'EmployeeController@index');
 Route::get('/employees/create','EmployeeController@create')->name('employees.create');
+Route::get('/employees/edit/{employee}','EmployeeController@edit')->name('employees.edit');
+Route::get('/employees/show/{employee}','EmployeeController@show')->name('employees.show');
+Route::patch('/employees/update/{employee}','EmployeeController@update')->name('employees.update');
 Route::post('/employees','EmployeeController@store')->name('employees.store');
 //Route Document
 Route::get('/download/{id}','AssignmentCellphoneEmployeeController@download' )->name('download.acuerdo');

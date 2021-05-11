@@ -25,7 +25,7 @@
             <tr>
                 <td>{{$assignment->cellphone->model}}</td>   
                 <td>{{$assignment->cellphone->brand}}</td>
-                <td>{{$assignment->cellphone->number}}</td>
+                <td>{{$assignment->cellphone->number->number}}</td>
                 <td>{{$assignment->cellphone->imei}}</td>
                 <td>{{$assignment->cellphone->company->company_name}}</td>
                 <td>{{$assignment->cellphone->department->department_name}}</td>

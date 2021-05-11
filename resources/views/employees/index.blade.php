@@ -11,6 +11,7 @@
                 <th scope="col">Nombre </th>
                 <th scope="col">Labora</th>
                 <th scope="col">Area</th>
+                <th scope="col">Cargo</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -20,7 +21,8 @@
                 <td>{{$employee->employee_name}}</td>
                 <td>{{$employee->company->company_name}}</td>
                 <td>{{$employee->department->department_name}}</td>
-                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-circle-08 text-dark"></i></a></td>
+                <td>{{$employee->job_title}}</td>
+                <td><a class="btn btn-icon btn-primary btn-sm" href="{{url('employees/show',$employee)}}"><i class="ni ni-circle-08 text-dark"></i></a></td>
             </tr>    
             @endforeach
             

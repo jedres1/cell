@@ -28,7 +28,7 @@
                 <td>{{$cellphone->company->company_name}}</td>
                 <td>{{$cellphone->department->department_name}}</td>
                 <td>{{$cellphone->status==1?"Asignado":"Disponible"}}</td>
-                <td><a class="btn btn-icon btn-primary btn-sm" href="#"><i class="ni ni-mobile-button text-dark"></i></a></td>
+                <td><a class="btn btn-icon btn-primary btn-sm" href="{{route('cellphones.show',$cellphone)}}"><i class="ni ni-mobile-button text-dark"></i></a></td>
             </tr>    
             @endforeach
             

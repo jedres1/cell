@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
+            $table->string('job_title');
             $table->timestamps();
         });
     }

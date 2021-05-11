@@ -1,116 +1,52 @@
-<!DOCTYPE html>
-<html>
+@csrf
+<div class="col-md-6">
+  <label for="model" class="form-label" >model</label>
+  <input type="text" class="form-control" name="model" id="model" value="{{ old('model',$cellphone->model) }}" required>
+</div>
+<div class="col-md-6">
+  <label for="brand" class="form-label" >Marca</label>
+  <input type="text" class="form-control" name="brand" id="brand" value="{{old('brand',$cellphone->brand)}}"required>
+</div>
+<div class="col-md-6">
+  <label for="imei" class="form-label" >imei</label>
+  <input type="text" class="form-control" name="imei" id="imei" value="{{old('imei',$cellphone->imei)}}"required>
+</div>
+<div class="col-md-6">
+  <label for="number" class="form-label" >Numero</label>
+  <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="number" id="number" value="{{old('number',$cellphone->number_id)}}">
+    @foreach ( $numbers as $number )
+        <option value="{{$number->id}}">{{$number->number}}</option>
+    @endforeach
+  </select>
+</div>
+<div class="col-md-4">
+  <label for="company_id" class="form-label" >Empresa Titular</label>
+    <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="company_id" id="company_id" value="{{old('company_id',$cellphone->company_id)}}">
+      
+      @foreach ( $companies as $company )
+        <option value="{{$company->id}}">{{$company->company_name}}</option>
+      @endforeach
+      
+    </select>
+</div>
+<div class="col-md-4">
+  <label for="department_id" class="form-label" >Departamento Asignado</label>
+  <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="department_id" id="department_id" value="{{old('department_id',$cellphone->department_id)}}">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="Creative Tim">
-  <title>{{config('app.name')}}</title>
-  <!-- Favicon -->
-  <link href="{{ asset('img/brand/favicon.png')}}" rel="icon" type="image/png">
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <!-- Icons -->
-  <link href="{{ asset('vendor/nucleo/css/nucleo.css')}}" rel="stylesheet">
-  <link href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
-  <!-- Argon CSS -->
-  <link type="text/css" href="{{ asset('css/argon.css?v=1.0.0')}}" rel="stylesheet">
-</head>
+    @foreach ( $departments as $department )
+        <option value="{{$department->id}}">{{$department->department_name}}</option>
+    @endforeach
+  </select>
+</div>
+<div class="col-md-4">
+  <label for="status" class="form-label" >Estado</label>
+  <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status" value="{{old('status',$cellphone->status)}}">
+    <option value="0">Disponible</option>
+    <option value="1">Asignado</option>
+  </select>
+</div>
+<br>
+<div class="col-6 m3">
+  <button type="submit" class="btn btn-info">{{ $btnText }}</button>
+</div>
 
-<body class="bg-default">
-  <div class="main-content">
-    <!-- Navbar -->
-    <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
-      <div class="container px-4">
-        <a class="navbar-brand" href="../index.html">
-          <img src="{{ asset('img/brand/white.png')}}" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-collapse-main">
-          <!-- Collapse header -->
-          <div class="navbar-collapse-header d-md-none">
-            <div class="row">
-              <div class="col-6 collapse-brand">
-                <a href="../index.html">
-                  <img src="{{ asset('img/brand/blue.png')}}">
-                </a>
-              </div>
-              <div class="col-6 collapse-close">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
-                  <span></span>
-                  <span></span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- Navbar items -->
-          <ul class="navbar-nav ml-auto">
-            
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="{{route('register')}}">
-                <i class="ni ni-circle-08"></i>
-                <span class="nav-link-inner--text">Registro</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="{{route('login')}}">                <i class="ni ni-key-25"></i>
-                <span class="nav-link-inner--text">Ingresar</span>
-              </a>
-            </li>
-            
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- Header -->
-    <div class="header bg-gradient-primary py-7 py-lg-8">
-      <div class="container">
-        <div class="header-body text-center mb-7">
-          <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="separator separator-bottom separator-skew zindex-100">
-        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-    </div>
-    <!-- Page content -->
-    @yield('content')
-  </div>
-  <!-- Footer -->
-  <footer class="py-5">
-    <div class="container">
-      <div class="row align-items-center justify-content-xl-between">
-        <div class="col-xl-6">
-          <div class="copyright text-center text-xl-left text-muted">
-            &copy; 2018 <a href="/" class="font-weight-bold ml-1" target="_blank">{{config('app.name')}}</a>
-          </div>
-        </div>
-        <div class="col-xl-6">
-          <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Temple</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="{{ asset('vendor/jquery/dist/jquery.min.js')}}"></script>
-  <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-  <!-- Argon JS -->
-  <script src="{{ asset('js/argon.js?v=1.0.0')}}"></script>
-</body>
-
-</html>

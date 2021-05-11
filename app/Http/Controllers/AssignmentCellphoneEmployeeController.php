@@ -11,18 +11,17 @@ class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
     {
-        $assignments=AssignmentCellphoneEmployee::where('status',1)
-            ->orderBy('id','desc')
+        $assignments=AssignmentCellphoneEmployee::orderBy('id','desc')
             ->with(['cellphone','employee'])
             ->paginate(10);
         //return $assignments;
         return view('assignments.index',['assignments'=>$assignments]);
     }
     public function create()
-    {   
+    {   $assignment=new AssignmentCellphoneEmployee();
         $cellphones=Cellphone::where('status','<>',1)->get();
         $employees=Employee::all();
-        return view('assignments.create',compact('cellphones','employees'));
+        return view('assignments.create',compact('cellphones','employees','assignment'));
     }
     public function store(Request $request)
     {
@@ -55,28 +54,35 @@ class AssignmentCellphoneEmployeeController extends Controller
     $assignment=AssignmentCellphoneEmployee::where('id',$id)->with(['cellphone','employee'])->get();
        
     try {
-            $template = new \PhpOffice\PhpWord\TemplateProcessor('docs\acuerdo.docx');
+            $template = new \PhpOffice\PhpWord\TemplateProcessor('docs\acuerdo_cell.docx');
             $assignment=AssignmentCellphoneEmployee::find($id);//where('id',$id)->with(['cellphone','employee'])->get();
             $template->setValue('name',$assignment->employee->employee_name);
+            $template->setValue('job_title',$assignment->employee->job_title);
             $template->setValue('model',$assignment->cellphone->model);
             $template->setValue('company',$assignment->cellphone->company->company_name);
-            $template->setValue('employee','Representante');
             $template->setValue('department',$assignment->employee->department->department_name);
-            $template->setValue('number',$assignment->cellphone->number);
-            $template->setValue('serial','aefa323');
+            $template->setValue('number',$assignment->cellphone->number->number);
+            $template->setValue('imei',$assignment->cellphone->imei);
+            $template->setValue('legal_representative',$assignment->cellphone->company->company_name=='PUBLIMAGEN'?'Orlando LLovera':'Juan Gilberto Cañas');
             $template->setValue('brand',$assignment->cellphone->brand);
-            $template->setValue('note','se entrega nuevo');
+            $template->setValue('note','Nuevo');
             $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
             $template->saveAs($tempFile);
         
             $headers = [
                 "Content-Type: application\octet-stream",
             ];
-            return response()->download($tempFile,'Nombre_documento.docx',$headers)->deleteFileAfterSend(true);
+            return response()->download($tempFile,$assignment->employee->employee_name.'.docx',$headers)->deleteFileAfterSend(true);
         
         } catch (\PhpOffice\PhpWord\Exception\Exception $e) {
             return back($e->getCode());
-        }
-        
+        } 
+   }
+   public function edit($id)
+   {
+       $employees=Employee::all();
+       $cellphones = Cellphone::all();
+        $assignment = AssignmentCellphoneEmployee::find($id);
+        return view('/assignments/edit',compact('assignment','employees','cellphones'));
    }
 }
