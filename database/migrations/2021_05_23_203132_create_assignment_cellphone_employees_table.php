@@ -20,6 +20,7 @@ class CreateAssignmentCellphoneEmployeesTable extends Migration
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->tinyInteger('status');
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

@@ -62,10 +62,11 @@ class AssignmentCellphoneEmployeeController extends Controller
             $template->setValue('company',$assignment->cellphone->company->company_name);
             $template->setValue('department',$assignment->employee->department->department_name);
             $template->setValue('number',$assignment->cellphone->number->number);
+            $template->setValue('data_plan',$assignment->cellphone->number->data_plan);
             $template->setValue('imei',$assignment->cellphone->imei);
             $template->setValue('legal_representative',$assignment->cellphone->company->company_name=='PUBLIMAGEN'?'Orlando LLovera':'Juan Gilberto Cañas');
             $template->setValue('brand',$assignment->cellphone->brand);
-            $template->setValue('note','Nuevo');
+            $template->setValue('note',$assignment->note);
             $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
             $template->saveAs($tempFile);
         

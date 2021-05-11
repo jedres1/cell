@@ -20,6 +20,10 @@
       <option value="2">No Asignado</option>
     </select>
 </div>
+<div class="col-md-12">
+  <label for="data_plan" class="form-label" >Plan de datos</label>
+  <input type="text" class="form-control" name="data_plan" id="data_plan" value="{{ old('data_plan',$number->data_plan) }}" required>
+</div>
 <br>
 <div class="col-6 m3">
   <button type="submit" class="btn btn-primary">{{$btnText}}</button>

@@ -34,7 +34,8 @@ class NumberController extends Controller
         Number::create([
             'number' => $request->number,
             'company_id' => $request->company_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'data_plan' => $request->data_plan
             
         ]);
         return redirect('/numbers'); 
@@ -56,7 +57,8 @@ class NumberController extends Controller
         $number->update([
             'number' => request('number'),
             'company_id' => request('company_id'),
-            'status' => request('status')
+            'status' => request('status'),
+            'data_plan'=> request('data_plan')
         ]);
         
         return redirect()->route('numbers.show',$number);

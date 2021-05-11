@@ -4,7 +4,7 @@
   <div class="card">
     <div class="card-body shadow-sm">
       <form class="row g-3" action="{{ route('assignments.store') }}" method="POST">
-        @include('assignments\partials\form-assignments')
+        @include('assignments\partials\form-assignments',['btnText'=>'Guardar'])
         <div class="col-6 m3">
           <a href="{{ url('/assignments') }}" class="btn btn-primary float-right">Cancelar</a>
         </div>

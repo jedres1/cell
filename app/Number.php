@@ -10,7 +10,8 @@ class Number extends Model
     protected $fillable = [
         'number',
         'company_id',
-        'status'
+        'status',
+        'data_plan'
     ];
 
     public function company()

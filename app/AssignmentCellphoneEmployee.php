@@ -11,7 +11,8 @@ class AssignmentCellphoneEmployee extends Model
     protected $fillable = [
         'cellphone_id',
         'employee_id',
-        'status'
+        'status',
+        'note'
     ];
 
    public function cellphone()
