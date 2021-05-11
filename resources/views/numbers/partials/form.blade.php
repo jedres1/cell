@@ -6,9 +6,9 @@
 <div class="col-md-4">
   <label for="company_id" class="form-label" >Empresa Titular</label>
     <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="company_id" id="company_id" value="{{old('company_id')}}">
-      <option selected>Seleccione una Empresa</option>
-      @foreach ( $companies as $company )
-        <option value="{{$company->id}}">{{$company->company_name}}</option>
+      
+      @foreach ( $companies as $key => $company )
+        <option value="{{$key}}" @if ($key == old('company_id',$number->company_id)) selected @endif>{{$company->company_name}}</option>
       @endforeach
       
     </select>
@@ -16,8 +16,8 @@
 <div class="col-md-4">
   <label for="status" class="form-label" >Estado</label>
     <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status" value="{{old('status')}}">
-      <option value="1" selected>Asignado</option>
-      <option value="2" selected>No Asignado</option>
+      <option value="1">Asignado</option>
+      <option value="2">No Asignado</option>
     </select>
 </div>
 <br>

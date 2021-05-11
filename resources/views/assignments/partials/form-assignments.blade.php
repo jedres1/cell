@@ -3,17 +3,17 @@
           <label for="cellphone_id" class="form-label" >Celular</label>
           <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="cellphone_id" id="cellphone_id" value="{{old('cellphone_id',$assignment->cellphone_id)}}">
             <option selected>Seleccione Celular</option>
-            @foreach ( $cellphones as $cellphone )
-                <option value="{{$cellphone->id}}">{{ $cellphone->brand }}</option>
+            @foreach ( $cellphones as $key => $cellphone )
+                <option value="{{($key+1)}}" @if (($key+1) == old('cellphone_id',$assignment->cellphone_id))selected @endif>{{ $cellphone->brand }}</option>
             @endforeach
           </select>
         </div>
         <div class="col-md-3">
           <label for="employee_id" class="form-label" >Empleado Asignado</label>
           <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="employee_id" id="employee_id"  value="{{old('employeed_id',$assignment->employeed_id)}}">
-            <option selected>Seleccione un Empleado</option>
-            @foreach ( $employees as $employee )
-                <option value="{{$employee->id}}">{{$employee->employee_name}}</option>
+            
+            @foreach ( $employees as $key => $employee )
+                <option value="{{($key+1)}}" @if (($key+1) == old('employee_id',$cellphone->employee_id))selected @endif>{{$employee->employee_name}}</option>
             @endforeach
           </select>
         </div>
