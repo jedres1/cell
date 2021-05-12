@@ -29,7 +29,8 @@ class AssignmentCellphoneEmployeeController extends Controller
         AssignmentCellphoneEmployee::create([
             'cellphone_id' => $request->cellphone_id,
             'employee_id' => $request->employee_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'note'=>$request->note
         ]);
         $cell=Cellphone::find($request->cellphone_id);
         $cell->update(['status'=>1]);
@@ -44,10 +45,13 @@ class AssignmentCellphoneEmployeeController extends Controller
    public function update($id)
    {
        $assignment=AssignmentCellphoneEmployee::find($id);
-       $assignment->update(['status'=>2]);
-       $cell=Cellphone::find($assignment->cellphone_id);
-       $cell->update(['status'=>2]);
-       return redirect('/assignments');
+       $assignment->update([
+           'status'=>request('status'),
+           'note'=>request('note')
+           ]);
+       //$cell=Cellphone::find($assignment->cellphone_id);
+       //$cell->update(['status'=>2]);
+       return redirect()->route('assignments.show',$assignment);
    }
    public function download($id)
    {

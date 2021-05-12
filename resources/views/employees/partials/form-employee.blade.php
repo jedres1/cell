@@ -7,8 +7,8 @@
   <label for="company_id" class="form-label" >Empresa Titular</label>
     <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="company_id" id="company_id" value="{{old('company_id',$employee->company_id)}}">
       <option selected>Seleccione una Empresa</option>
-      @foreach ( $companies as $key => $company )
-        <option value="{{($key+1)}}" @if (($key+1)==old('company_id',$employee->company_id)) selected @endif>{{$company->company_name}}</option>
+      @foreach ( $companies as $company )
+        <option value="{{$company->id}}" @if ($company->id == old('company_id',$employee->company_id)) selected @endif>{{$company->company_name}}</option>
       @endforeach
       
     </select>
@@ -17,8 +17,8 @@
   <label for="department_id" class="form-label" >Departamento Asignado</label>
   <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="department_id" id="department_id" value="{{old('company_id',$employee->department_id)}}">
     <option selected>Seleccione un departmamento</option>
-    @foreach ( $departments as $key => $department )
-        <option value="{{($key+1)}}" @if (($key+1)==old('department_id',$employee->department_id)) selected @endif>{{$department->department_name}}</option>
+    @foreach ( $departments as $department )
+        <option value="{{$department->id}}" @if ($department->id==old('department_id',$employee->department_id)) selected @endif>{{$department->department_name}}</option>
     @endforeach
   </select>
 </div>

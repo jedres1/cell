@@ -15,6 +15,7 @@
         <p class="list-group-item ">Modelo: {{ $item->cellphone->model }}</p>
         <p class="list-group-item ">Marca: {{ $item->cellphone->brand }}</p>
         <p class="list-group-item ">Numero: {{ $item->cellphone->number->number }}|{{ $item->cellphone->number->company->company_name }}</p>
+        <p class="list-group-item ">Nota: {{ $item->note }}</p>
         <p class="list-group-item border-0 mb-3 shadow-sm">Acuerdo en Estado: {{ $item->cellphone->status==1?'Activo':'Entrega Pendiente' }}</p>
         @endforeach
   

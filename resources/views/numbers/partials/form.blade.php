@@ -8,7 +8,7 @@
     <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="company_id" id="company_id" value="{{old('company_id')}}">
       
       @foreach ( $companies as $key => $company )
-        <option value="{{$key}}" @if ($key == old('company_id',$number->company_id)) selected @endif>{{$company->company_name}}</option>
+        <option value="{{($key+1)}}" @if (($key+1) == old('company_id',$number->company_id)) selected @endif>{{$company->company_name}}</option>
       @endforeach
       
     </select>
