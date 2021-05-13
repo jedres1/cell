@@ -1,7 +1,11 @@
 @csrf
-<div class="col-md-12">
+<div class="col-md-6">
   <label for="employee_name" class="form-label" >Nombre del empleado</label>
   <input type="text" class="form-control" name="employee_name" id="employee_name" value="{{ old('employee_name',$employee->employee_name) }}" required>
+</div>
+<div class="col-md-6">
+  <label for="email" class="form-label" >Email</label>
+  <input type="text" class="form-control" name="email" id="email" value="{{ old('email',$employee->email  ) }}" required>
 </div>
 <div class="col-md-4">
   <label for="company_id" class="form-label" >Empresa Titular</label>

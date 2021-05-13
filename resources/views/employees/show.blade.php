@@ -4,6 +4,7 @@
   <div class="card">
     <div class="card-body">
         <p class="list-group-item ">Nombre: {{$employee->employee_name}}</p>
+        <p class="list-group-item ">email: {{$employee->email}}</p>
         <p class="list-group-item ">Empresa: {{$employee->company->company_name}}</p>
         <p class="list-group-item ">Departamento: {{$employee->department->department_name}}</p>
         <p class="list-group-item ">cargo: {{$employee->job_title}}</p>

@@ -34,13 +34,15 @@ class EmployeeController extends Controller
             'employee_name' =>'required',
             'company_id' =>'required',
             'department_id' =>'required',
-            'job_title'=>'required'
+            'job_title'=>'required',
+            'email'=>'required'
         ]);
         Employee::create([
             'employee_name' => $request->employee_name,
             'company_id' => $request->company_id,
             'department_id' => $request->department_id,
-            'job_title' => $request->job_title
+            'job_title' => $request->job_title,
+            'email' => $request->email
             
         ]);
         return redirect('/employees'); 
@@ -62,7 +64,8 @@ class EmployeeController extends Controller
             'employee_name' => request('employee_name'),
             'company_id' => request('company_id'),
             'department_id' => request('department_id'),
-            'job_title' => request('job_title')
+            'job_title' => request('job_title'),
+            'email' => request('email')
         ]);
         return redirect()->route('employees.show',$employee);
     }
