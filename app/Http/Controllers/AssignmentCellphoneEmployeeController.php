@@ -11,7 +11,7 @@ class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
     {
-        $assignments=AssignmentCellphoneEmployee::orderBy('id','desc')
+        $assignments=AssignmentCellphoneEmployee::orderBy('id','asc')
             ->with(['cellphone','employee'])
             ->paginate(10);
         //return $assignments;

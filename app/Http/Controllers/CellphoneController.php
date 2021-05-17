@@ -15,7 +15,7 @@ class CellphoneController extends Controller
 {
     public function index()
     {
-        $cellphones = Cellphone::orderBy('id','desc')
+        $cellphones = Cellphone::orderBy('id','asc')
             ->with(['department','company','number'])
             ->paginate(10);
         
@@ -66,7 +66,7 @@ class CellphoneController extends Controller
         $cellphone = Cellphone::find($id);
         $companies=Company::all();
         $departments=Department::all();
-        $numbers=Number::where('status','<>',1)->get();
+        $numbers=Number::all();//where('status','<>',1)->get();
         return view('cellphones.edit',compact('cellphone','numbers','companies','departments'));
     }
     public function update(Cellphone $cellphone)

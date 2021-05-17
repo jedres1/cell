@@ -10,7 +10,7 @@ class NumberController extends Controller
 {
     public function index()
     {
-        $numbers = Number::paginate(10);
+        $numbers = Number::orderBy('id','asc')->paginate(10);
             
         return view('numbers.index',[
             'numbers' => $numbers

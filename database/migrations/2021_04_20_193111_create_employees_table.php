@@ -21,7 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->unsignedBigInteger('department_id');
             $table->string('email')->nullable();
             $table->foreign('department_id')->references('id')->on('departments');
-            $table->string('job_title');
+            $table->string('job_title')->nullable();
             $table->timestamps();
         });
     }

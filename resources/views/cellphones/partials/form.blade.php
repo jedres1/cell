@@ -33,7 +33,7 @@
   <label for="department_id" class="form-label" >Departamento Asignado</label>
   <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="department_id" id="department_id" value="{{old('department_id',$cellphone->department_id)}}">
 
-    @foreach ( $departments as $key => $department )
+    @foreach ( $departments as $department )
         <option value="{{$department->id}}" @if ($department->id == old('department_id',$cellphone->department_id)) selected @endif>{{$department->department_name}}</option>
     @endforeach
   </select>
