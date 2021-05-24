@@ -31,10 +31,14 @@ Route::post('/numbers/store','NumberController@store')->name('numbers.store');
 //Route assignments
 Route::get('/assignments', 'AssignmentCellphoneEmployeeController@index');
 Route::get('/assignments/create','AssignmentCellphoneEmployeeController@create')->name('assignments.create');
-Route::get('/assignments/show/{assignment}','AssignmentCellphoneEmployeeController@show')->name('assignments.show');
+
 Route::get('/assignments/edit/{assignment}','AssignmentCellphoneEmployeeController@edit')->name('assignments.edit');
 Route::patch('/assignments/update/{assignment}','AssignmentCellphoneEmployeeController@update')->name('assignments.update');
+
 Route::post('/assignments','AssignmentCellphoneEmployeeController@store')->name('assignments.store');
+Route::get('/assignments/show/{assignment}','AssignmentCellphoneEmployeeController@show')->name('assignments.show');
+
+Route::delete('/assignments/{assignment}','AssignmentCellphoneEmployeeController@destroy')->name('assignments.delete');
 //Routes cellphone
 Route::get('/cellphones', 'CellphoneController@index');
 Route::get('/cellphones/create','CellphoneController@create')->name('cellphones.create');

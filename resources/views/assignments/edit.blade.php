@@ -8,7 +8,9 @@
         @include('assignments\partials\form-assignments',['btnText'=>'Actualizar'])
         <div class="col-6 m3">
           <a href="{{ url('/assignments/show',$assignment) }}" class="btn btn-primary float-right">Cancelar</a>
+          
         </div>
+      </form>
     </form>  
     </div>
   </div>

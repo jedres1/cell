@@ -14,9 +14,10 @@
         <p class="list-group-item ">Celular pertenece a : {{ $item->cellphone->company->company_name }}</p>
         <p class="list-group-item ">Modelo: {{ $item->cellphone->model }}</p>
         <p class="list-group-item ">Marca: {{ $item->cellphone->brand }}</p>
+        <p class="list-group-item ">IMEI: {{ $item->cellphone->imei }}</p>
         <p class="list-group-item ">Numero: {{ $item->cellphone->number->number }}|{{ $item->cellphone->number->company->company_name }}</p>
         <p class="list-group-item ">Nota: {{ $item->note }}</p>
-        <p class="list-group-item border-0 mb-3 shadow-sm">Acuerdo en Estado: {{ $item->cellphone->status==1?'Activo':'Entrega Pendiente' }}</p>
+        <p class="list-group-item border-0 mb-3 shadow-sm">Acuerdo en Estado: {{ $item->status==1?'Entrega Pendiente':$item->status==2?'Activo':'Inactivo' }}</p>
         @endforeach
   
     <div class="form-row"> 
@@ -25,6 +26,7 @@
         </div>     
         <div class="col-4 mb-3 text-center">
             <a class="btn btn-warning" href="{{route('download.acuerdo',$item->id)}}">Acuerdo <i class="ni ni-archive-2 text-white"></i></a>
+            
         </div>      
         <form class="col-4 mb-3" method="get" action="{{route('assignments.edit',$item->id)}}">
             

@@ -81,8 +81,10 @@ class CellphoneController extends Controller
             'department_id' => request('department_id'),
             'company_id' => request('company_id')
         ]);
-        $number=Number::find($cellphone->number_id);
-        $number->update(['status'=>1]);
+        if(request('status')==0){
+            $number=Number::find($cellphone->number_id);
+            $number->update(['status'=>1]);
+        }
         return redirect('/cellphones');
        
     }

@@ -6,21 +6,30 @@ use Illuminate\Http\Request;
 use App\AssignmentCellphoneEmployee;
 use App\Cellphone;
 use App\Employee;
+use Luecano\NumeroALetras\NumeroALetras;
 
 class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
     {
-        $assignments=AssignmentCellphoneEmployee::orderBy('id','asc')
+        $activeAssignments=AssignmentCellphoneEmployee::where('status',1)
             ->with(['cellphone','employee'])
             ->paginate(10);
+        $pendingAssignments=AssignmentCellphoneEmployee::where('status',2)
+        ->with(['cellphone','employee'])
+        ->paginate(10);
+        $historyAssignments=AssignmentCellphoneEmployee::where('status',3)
+        ->with(['cellphone','employee'])
+        ->paginate(10);
         //return $assignments;
-        return view('assignments.index',['assignments'=>$assignments]);
+        return view('assignments.index',
+            compact('activeAssignments','pendingAssignments','historyAssignments')
+        );
     }
     public function create()
     {   $assignment=new AssignmentCellphoneEmployee();
         $cellphones=Cellphone::where('status','<>',1)->get();
-        $employees=Employee::all();
+        $employees=Employee::orderBy('employee_name','asc')->get();
         return view('assignments.create',compact('cellphones','employees','assignment'));
     }
     public function store(Request $request)
@@ -49,14 +58,22 @@ class AssignmentCellphoneEmployeeController extends Controller
            'status'=>request('status'),
            'note'=>request('note')
            ]);
-       //$cell=Cellphone::find($assignment->cellphone_id);
-       //$cell->update(['status'=>2]);
+           if (request('status')==1){
+            $cell=Cellphone::find($assignment->cellphone_id);
+            $cell->update(['status'=>3]);
+           }
        return redirect()->route('assignments.show',$assignment);
    }
    public function download($id)
    {
+    
+    $formatter = new NumeroALetras();
+    setlocale(LC_ALL, 'es_ES');
+    $date = strtolower($formatter->toWords(date('d'))).' de '.ucwords(strftime('%B')).' del '.strtolower($formatter->toWords(date('Y')));
+
+    return $date;
     $assignment=AssignmentCellphoneEmployee::where('id',$id)->with(['cellphone','employee'])->get();
-       
+    
     try {
             $template = new \PhpOffice\PhpWord\TemplateProcessor('docs\acuerdo_cell.docx');
             $assignment=AssignmentCellphoneEmployee::find($id);//where('id',$id)->with(['cellphone','employee'])->get();
@@ -70,7 +87,9 @@ class AssignmentCellphoneEmployeeController extends Controller
             $template->setValue('imei',$assignment->cellphone->imei);
             $template->setValue('legal_representative',$assignment->cellphone->company->company_name=='PUBLIMAGEN'?'Orlando LLovera':'Juan Gilberto Cañas');
             $template->setValue('brand',$assignment->cellphone->brand);
+            $template->setValue('date',$date);
             $template->setValue('note',$assignment->note);
+        
             $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
             $template->saveAs($tempFile);
         
@@ -85,9 +104,17 @@ class AssignmentCellphoneEmployeeController extends Controller
    }
    public function edit($id)
    {
-       $employees=Employee::all();
+       $employees=Employee::orderBy('employee_name','asc')->get();
        $cellphones = Cellphone::all();
         $assignment = AssignmentCellphoneEmployee::find($id);
         return view('/assignments/edit',compact('assignment','employees','cellphones'));
+   }
+   public function destroy( AssignmentCellphoneEmployee $assignment)
+   { 
+       $id = $assignment->cellphone_id;
+       $assignment->update(['status'=>3]);
+       $cell = Cellphone::find($id);
+       $cell->update(['status'=>0]);
+       return redirect("/assignments");
    }
 }

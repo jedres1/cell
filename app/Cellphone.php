@@ -16,6 +16,7 @@ class Cellphone extends Model
     'imei',
     'number_id',
     'status',
+    'accessories',
     'department_id',
     'company_id'
    ];

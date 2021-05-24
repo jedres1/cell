@@ -40,13 +40,17 @@
 </div>
 <div class="col-md-4">
   <label for="status" class="form-label" >Estado</label>
-  <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status" value="{{old('status',$cellphone->status)}}">
-    <option value="0">Disponible</option>
-    <option value="1">Asignado</option>
+  <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status" >
+    <option value="0" @if(old('status',$cellphone->status)) selected @endif >Disponible</option>
+    <option value="1" @if(old('status',$cellphone->status)) selected @endif>Asignado</option>
   </select>
 </div>
-<br>
+<div class="form-group col-md-12">
+  <label for="accessories" class="form-label" >Accesorios</label>
+  <input type="text" class="form-control" name="accessories" id="accessories" value="{{ old('accessories',$cellphone->accessories) }}">
+</div>
+
 <div class="col-6 m3">
   <button type="submit" class="btn btn-info">{{ $btnText }}</button>
 </div>
-
+<script src="{{ asset('/js/asignment/recived.js') }}"></script>

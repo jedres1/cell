@@ -18,6 +18,7 @@ class CreateCellphonesTable extends Migration
             $table->string('model');
             $table->string('brand');
             $table->string('imei');
+            $table->string('accessories')->nullable();
             $table->tinyInteger('status');
             //foreign key number
             $table->unsignedBigInteger('number_id')->nullable();

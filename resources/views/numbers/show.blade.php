@@ -6,6 +6,7 @@
         <p class="list-group-item">numero: {{$number->number}}</p>
         <p class="list-group-item">empresa: {{$number->company->company_name}}</p>
         <p class="list-group-item">estado: {{$number->status==1?'Asignado':'No Asignado'}}</p>
+        <p class="list-group-item">Plan: {{$number->data_plan}}</p>
     </div>
   </div><br>
   <form class="row g-3" action="{{ route('numbers.edit',$number) }}" method="get">
