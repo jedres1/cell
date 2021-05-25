@@ -27,7 +27,6 @@
                 <a class="btn btn-icon btn-primary btn-sm" href="{{route('assignments.show', $assignment)}}">
                     <i class="ni ni-send text-dark"></i>
                 </a>
-                <a href="{{ route('assignments.delete',$assignment)}}" class="btn btn-warning btn-sm"><i class="ni ni-sound-wave text-dark"></i></a>
                 
             </td>
             

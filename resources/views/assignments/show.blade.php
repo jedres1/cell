@@ -17,7 +17,7 @@
         <p class="list-group-item ">IMEI: {{ $item->cellphone->imei }}</p>
         <p class="list-group-item ">Numero: {{ $item->cellphone->number->number }}|{{ $item->cellphone->number->company->company_name }}</p>
         <p class="list-group-item ">Nota: {{ $item->note }}</p>
-        <p class="list-group-item border-0 mb-3 shadow-sm">Acuerdo en Estado: {{ $item->status==1?'Entrega Pendiente':$item->status==2?'Activo':'Inactivo' }}</p>
+        <p class="list-group-item border-0 mb-3 shadow-sm">Acuerdo en Estado: {{ $item->status=='1'?'Entrega Pendiente':$item->status==2?'Activo':'Inactivo' }}</p>
         @endforeach
   
     <div class="form-row"> 

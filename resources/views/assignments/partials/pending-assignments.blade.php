@@ -27,12 +27,6 @@
                     <i class="ni ni-send text-dark"></i>
                 </a>
             </td>
-            <td>
-                <form method="POST" action="{{route('assignments.delete',$assignment)}}">
-                    @csrf @method('delete')
-                    <button class="btn btn-icon btn-warning btn-sm"><i class="ni ni-sound-wave text-dark"></i></button>
-                </form>
-            </td>
         </tr>
    
         @endforeach

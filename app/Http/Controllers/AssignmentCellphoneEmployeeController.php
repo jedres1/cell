@@ -51,14 +51,14 @@ class AssignmentCellphoneEmployeeController extends Controller
        return view('assignments.show',compact('assignment'));
         
     }
-   public function update($id)
+   public function update(AssignmentCellphoneEmployee $assignment)
    {
-       $assignment=AssignmentCellphoneEmployee::find($id);
        $assignment->update([
-           'status'=>request('status'),
-           'note'=>request('note')
+           'status' => request('status'),
+           'note' => request('note')  
            ]);
-           if (request('status')==1){
+       $assignment->save();
+           if (request('status')==3){
             $cell=Cellphone::find($assignment->cellphone_id);
             $cell->update(['status'=>3]);
            }
@@ -70,13 +70,19 @@ class AssignmentCellphoneEmployeeController extends Controller
     $formatter = new NumeroALetras();
     setlocale(LC_ALL, 'es_ES');
     $date = strtolower($formatter->toWords(date('d'))).' de '.ucwords(strftime('%B')).' del '.strtolower($formatter->toWords(date('Y')));
-
-    return $date;
-    $assignment=AssignmentCellphoneEmployee::where('id',$id)->with(['cellphone','employee'])->get();
-    
+    $assignment=AssignmentCellphoneEmployee::find($id);  
     try {
+        if($assignment->status==3){
+            $template = new \PhpOffice\PhpWord\TemplateProcessor('docs\entrega_salida.docx');
+            $template->setValue('name',$assignment->employee->employee_name);
+            $template->setValue('model',$assignment->cellphone->model.' imei: '.$assignment->cellphone->imei);
+            $template->setValue('company',$assignment->cellphone->company->company_name);
+            $template->setValue('brand',$assignment->cellphone->brand);
+            $template->setValue('status',$assignment->note);
+            $template->setValue('accessory',$assignment->cellphone->accesory);
+        }else{
             $template = new \PhpOffice\PhpWord\TemplateProcessor('docs\acuerdo_cell.docx');
-            $assignment=AssignmentCellphoneEmployee::find($id);//where('id',$id)->with(['cellphone','employee'])->get();
+            
             $template->setValue('name',$assignment->employee->employee_name);
             $template->setValue('job_title',$assignment->employee->job_title);
             $template->setValue('model',$assignment->cellphone->model);
@@ -89,16 +95,16 @@ class AssignmentCellphoneEmployeeController extends Controller
             $template->setValue('brand',$assignment->cellphone->brand);
             $template->setValue('date',$date);
             $template->setValue('note',$assignment->note);
+        }
+        $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
+        $template->saveAs($tempFile);
         
-            $tempFile = tempnam(sys_get_temp_dir(),'PHPWord');
-            $template->saveAs($tempFile);
+        $headers = [
+            "Content-Type: application\octet-stream",
+        ];
+        return response()->download($tempFile,$assignment->employee->employee_name.'.docx',$headers)->deleteFileAfterSend(true);
         
-            $headers = [
-                "Content-Type: application\octet-stream",
-            ];
-            return response()->download($tempFile,$assignment->employee->employee_name.'.docx',$headers)->deleteFileAfterSend(true);
-        
-        } catch (\PhpOffice\PhpWord\Exception\Exception $e) {
+    } catch (\PhpOffice\PhpWord\Exception\Exception $e) {
             return back($e->getCode());
         } 
    }
@@ -109,12 +115,5 @@ class AssignmentCellphoneEmployeeController extends Controller
         $assignment = AssignmentCellphoneEmployee::find($id);
         return view('/assignments/edit',compact('assignment','employees','cellphones'));
    }
-   public function destroy( AssignmentCellphoneEmployee $assignment)
-   { 
-       $id = $assignment->cellphone_id;
-       $assignment->update(['status'=>3]);
-       $cell = Cellphone::find($id);
-       $cell->update(['status'=>0]);
-       return redirect("/assignments");
-   }
+   
 }
