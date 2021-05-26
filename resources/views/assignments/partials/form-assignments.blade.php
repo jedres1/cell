@@ -20,9 +20,9 @@
         <div class="col-md-3">
           <label for="status" class="form-label" >Estatus Asignacion</label>
           <select class="form-select form-select-lg mb-3 form-control" aria-label=".form-select-lg example" name="status" id="status">
-            <option value="1" @if ($assignment->status == old('status',$assignment->status)) selected @endif>Entrega Pendiente</option>
-            <option value="2" @if ($assignment->status == old('status',$assignment->status)) selected @endif>Activo</option>
-            <option value="3" @if ($assignment->status == old('status',$assignment->status)) selected @endif>Inactivo</option>
+            <option value="1" @if ($assignment->status == 1) selected @endif>Entrega Pendiente</option>
+            <option value="2" @if ($assignment->status == 2) selected @endif>Activo</option>
+            <option value="3" @if ($assignment->status == 3) selected @endif>Inactivo</option>
           </select>
         </div>
         <div class="form-group col-12 m3">

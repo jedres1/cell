@@ -12,10 +12,10 @@ class AssignmentCellphoneEmployeeController extends Controller
 {
     public function index()
     {
-        $activeAssignments=AssignmentCellphoneEmployee::where('status',1)
+        $activeAssignments=AssignmentCellphoneEmployee::where('status',2)
             ->with(['cellphone','employee'])
             ->paginate(10);
-        $pendingAssignments=AssignmentCellphoneEmployee::where('status',2)
+        $pendingAssignments=AssignmentCellphoneEmployee::where('status',1)
         ->with(['cellphone','employee'])
         ->paginate(10);
         $historyAssignments=AssignmentCellphoneEmployee::where('status',3)
