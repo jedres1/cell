@@ -15,13 +15,19 @@ class CellphoneController extends Controller
 {
     public function index()
     {
-        $cellphones = Cellphone::orderBy('id','asc')
+        $movilCellphones = Cellphone::where('company_id',1)->orderBy('id','asc')
             ->with(['department','company','number'])
             ->paginate(10);
-        
-        return view('cellphones.index',[
-            'cellphones' => $cellphones
-        ]);
+        $imagenCellphones = Cellphone::where('company_id',2)->orderBy('id','asc')
+            ->with(['department','company','number'])
+            ->paginate(10);
+        $urbmanCellphones = Cellphone::where('company_id',3)->orderBy('id','asc')
+            ->with(['department','company','number'])
+            ->paginate(10);
+
+        return view('cellphones.index',
+            compact('movilCellphones','imagenCellphones','urbmanCellphones')
+        );
     }
 
     public function create()
