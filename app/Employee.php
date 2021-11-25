@@ -21,4 +21,12 @@ class Employee extends Model
    {
       return $this->belongsTo(Company::class);
    }
+   public function scopeFilter($query, $filters)
+    {
+        $query->when($filters['search'] ?? false , function($query, $search){
+            $query->where(function($query) use($search) {
+                $query->where('employee_name','like','%'.$search.'%');
+            });
+        });
+    }
 }

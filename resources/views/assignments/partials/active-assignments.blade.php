@@ -13,6 +13,7 @@
         </tr>
     </thead>
     <tbody>
+  
         @foreach ($activeAssignments as $assignment)
         
         <tr>

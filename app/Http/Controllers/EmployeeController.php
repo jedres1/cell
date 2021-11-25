@@ -9,14 +9,15 @@ use App\Department;
 
 class EmployeeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $employees = Employee::orderBy('employee_name','asc')
-            ->with(['department','company'])
-            ->paginate(10);
+        $employees = Employee::filter($request->only('search'))->orderBy('id','asc')
+        ->with(['department','company'])
+        ->paginate(10);
             
         return view('employees.index',[
-            'employees' => $employees
+            'employees' => $employees,
+            'filters'   => $request->all('search')
         ]);
     }
 

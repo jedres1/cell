@@ -13,21 +13,17 @@ use App\AssignmentCellphoneEmployee;
 
 class CellphoneController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $movilCellphones = Cellphone::where('company_id',1)->orderBy('id','asc')
+        $movilCellphones = Cellphone::filter($request->only('search'))->orderBy('id','asc')
             ->with(['department','company','number'])
-            ->paginate(10);
-        $imagenCellphones = Cellphone::where('company_id',2)->orderBy('id','asc')
-            ->with(['department','company','number'])
-            ->paginate(10);
-        $urbmanCellphones = Cellphone::where('company_id',3)->orderBy('id','asc')
-            ->with(['department','company','number'])
-            ->paginate(10);
-
-        return view('cellphones.index',
-            compact('movilCellphones','imagenCellphones','urbmanCellphones')
-        );
+            ->paginate(25);
+            
+            return view('cellphones.index',[
+                'movilCellphones' => $movilCellphones,
+                'filters'   => $request->all('search')
+            ]);
+        
     }
 
     public function create()

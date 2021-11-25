@@ -19,6 +19,8 @@ class CreateAssignmentCellphoneEmployeesTable extends Migration
             $table->foreign('cellphone_id')->references('id')->on('cellphones');
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->references('id')->on('employees');
+            $table->unsignedBigInteger('number_id')->nullable();
+            $table->foreign('number_id')->references('id')->on('numbers');
             $table->tinyInteger('status');
             $table->string('note')->nullable();
             $table->timestamps();

@@ -8,12 +8,13 @@ use App\Company;
 
 class NumberController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $numbers = Number::orderBy('id','asc')->paginate(10);
+        $numbers = Number::filter($request->only('search'))->orderBy('id','asc')->paginate(10);
             
         return view('numbers.index',[
-            'numbers' => $numbers
+            'numbers' => $numbers,
+            'filters'   => $request->all('search')
         ]);
     }
 

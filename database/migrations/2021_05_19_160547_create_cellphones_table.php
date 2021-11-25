@@ -20,9 +20,6 @@ class CreateCellphonesTable extends Migration
             $table->string('imei');
             $table->string('accessories')->nullable();
             $table->tinyInteger('status');
-            //foreign key number
-            $table->unsignedBigInteger('number_id')->nullable();
-            $table->foreign('number_id')->references('id')->on('numbers');
             //foreign key department
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');

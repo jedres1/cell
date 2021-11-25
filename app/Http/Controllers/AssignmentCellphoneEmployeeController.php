@@ -4,27 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\AssignmentCellphoneEmployee;
+use App\VistaAsignacion;
 use App\Cellphone;
 use App\Employee;
 use Luecano\NumeroALetras\NumeroALetras;
 
 class AssignmentCellphoneEmployeeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $activeAssignments=AssignmentCellphoneEmployee::where('status',2)
-            ->with(['cellphone','employee'])
-            ->paginate(10);
-        $pendingAssignments=AssignmentCellphoneEmployee::where('status',1)
-        ->with(['cellphone','employee'])
-        ->paginate(10);
-        $historyAssignments=AssignmentCellphoneEmployee::where('status',3)
-        ->with(['cellphone','employee'])
-        ->paginate(10);
-        //return $assignments;
-        return view('assignments.index',
-            compact('activeAssignments','pendingAssignments','historyAssignments')
-        );
+
+        $activeAssignments = AssignmentCellphoneEmployee::filter($request->only('search'))
+            ->where('status',2)
+            ->orderBy('id','asc')
+            ->paginate(25);
+            
+            return view('assignments.index',[
+                'activeAssignments' => $activeAssignments,
+                'filters'   => $request->all('search')
+            ]);
+        
     }
     public function create()
     {   $assignment=new AssignmentCellphoneEmployee();

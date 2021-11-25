@@ -27,6 +27,8 @@ Route::get('/numbers/edit/{number}','NumberController@edit')->name('numbers.edit
 Route::get('/numbers/show/{number}','NumberController@show')->name('numbers.show');
 Route::patch('/numbers/update/{number}','NumberController@update')->name('numbers.update');
 Route::post('/numbers/store','NumberController@store')->name('numbers.store');
+//Route search
+Route::get('/search/', 'PostsController@search')->name('search');
 
 //Route assignments
 Route::get('/assignments', 'AssignmentCellphoneEmployeeController@index');

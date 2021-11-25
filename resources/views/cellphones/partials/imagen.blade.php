@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($imagenCellphones as $cellphone)
+        @foreach ($movilCellphones as $cellphone)
         <tr>
             <td>{{$cellphone->model}}</td>
             <td>{{$cellphone->brand}}</td>
@@ -25,4 +25,4 @@
         
     </tbody>
 </table>
-{{$imagenCellphones->links()}}
+{{$movilCellphones->links()}}

@@ -97,15 +97,16 @@
           </div>
         </div>
         <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
+        <form class="mt-4 mb-3 d-md-none" action="{{ route('numbers.index') }}" method="GET">
           <div class="input-group input-group-rounded input-group-merge">
-            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Search" aria-label="Search">
+            <input type="search" class="form-control form-control-rounded form-control-prepended" placeholder="Searchff" aria-label="Search">
             <div class="input-group-prepend">
               <div class="input-group-text">
                 <span class="fa fa-search"></span>
               </div>
             </div>
           </div>
+          <button>enviar</button>
         </form>
         <!-- Navigation -->
         <ul class="navbar-nav">
@@ -159,15 +160,16 @@
         <!-- Brand -->
         <a class="h4 mb-0 text-darkblue text-uppercase d-none d-lg-inline-block" href="/">Cellphones</a>
         <!-- Form -->
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto" method="GET" action="{{ url()->current() }}">
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative">
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="fas fa-search"></i></span>
               </div>
-              <input class="form-control" placeholder="Search" type="text">
+              <input class="form-control" name="search" value="{{ !empty($filters) ? $filters['search'] : '' }}" placeholder="Search" type="text">
             </div>
           </div>
+          <button>enviar</button>
         </form>
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
