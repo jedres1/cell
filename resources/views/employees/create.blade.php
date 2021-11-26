@@ -6,7 +6,7 @@
       <form class="row g-3" action="{{ route('employees.store') }}" method="POST">
         @include('employees.partials.form-employee',['btnText'=>'Guardar'])
         <div class="col-6 m3">
-          <a href="{{ url('/employees') }}" class="btn btn-warning float-right">Cancelar</a>
+          <a href="{{ url('/employees') }}" class="btn btn-warning float-right">Cancelar2</a>
         </div> 
       </form>  
     </div>
