@@ -64,4 +64,5 @@ class NumberController extends Controller
         
         return redirect()->route('numbers.show',$number);
     }
+    
 }
