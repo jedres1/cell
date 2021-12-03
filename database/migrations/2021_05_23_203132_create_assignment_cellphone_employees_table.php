@@ -15,12 +15,10 @@ class CreateAssignmentCellphoneEmployeesTable extends Migration
     {
         Schema::create('assignment_cellphone_employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cellphone_id');
-            $table->foreign('cellphone_id')->references('id')->on('cellphones');
-            $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->unsignedBigInteger('number_id')->nullable();
-            $table->foreign('number_id')->references('id')->on('numbers');
+            $table->foreignId('cellphone_id')->constrained('cellphones');
+            $table->foreignId('employee_id')->constrained('employees');
+            $table->foreignId('number_id')->nullable()->constrained('numbers');
+            //stastus 0:inactivo, 1:activo
             $table->tinyInteger('status');
             $table->string('note')->nullable();
             $table->timestamps();

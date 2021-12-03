@@ -16,8 +16,7 @@ class CreateNumbersTable extends Migration
         Schema::create('numbers', function (Blueprint $table) {
             $table->id();
             $table->string('number');
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreignId('company_id')->constrained('companies');
             $table->string('data_plan')->nullable();
             $table->tinyInteger('status');
             $table->timestamps();

@@ -21,11 +21,11 @@ class CreateCellphonesTable extends Migration
             $table->string('accessories')->nullable();
             $table->tinyInteger('status');
             //foreign key department
-            $table->unsignedBigInteger('department_id');
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreignId('department_id')->constrained('departments');
+            //foreign key department
+            $table->foreignId('number_id')->nullable()->constrained('numbers')->onDelete('cascade');
             //foreign key company
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreignId('company_id')->constrained('companies');
             $table->timestamps();
         });
     }
