@@ -7,7 +7,7 @@
         @method('patch')
         @include('employees.partials.form-employee',['btnText'=>'Actualizar'])
         <div class="col-6 m3">
-          <a href="{{ url('/employees/show',$employee) }}" class="btn btn-primary float-right">Cancelar</a>
+          <a href="{{ url('/employees/show',$employee) }}" class="btn btn-danger float-right">Cancelar</a>
         </div>
       </form>  
     </div>

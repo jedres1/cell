@@ -22,7 +22,7 @@
   
     <div class="form-row"> 
         <div class="col-4 mb-3">
-            <a class="btn btn-success" href="{{url('/assignments')}}">Regresar</a>
+            <a class="btn btn-dark" href="{{url('/assignments')}}">Regresar</a>
         </div>     
         <div class="col-4 mb-3 text-center">
             <a class="btn btn-warning" href="{{route('download.acuerdo',$item->id)}}">Acuerdo <i class="ni ni-archive-2 text-white"></i></a>
@@ -30,7 +30,7 @@
         </div>      
         <form class="col-4 mb-3" method="get" action="{{route('assignments.edit',$item->id)}}">
             
-            <button type="submit" class="btn btn-danger float-right">Editar</button>
+            <button type="submit" class="btn btn-info float-right">Editar</button>
         </form>
     </div>
 </table>

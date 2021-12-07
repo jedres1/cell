@@ -16,9 +16,12 @@
   <link href="{{ asset('vendor/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="{{ asset('css/argon.css?v=1.0.0')}}" rel="stylesheet">
+
+  
 </head>
 
 <body>
+  <div id="app">
   <!-- Sidenav -->
   <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -225,8 +228,9 @@
       </footer>
     </div>
   </div>
+</div>
   <!-- Argon Scripts -->
-  
+  <script src="{{ asset('/js/app.js')}}"></script>
   <!-- Core -->
   <script src="{{ asset('vendor/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
