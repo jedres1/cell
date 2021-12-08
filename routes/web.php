@@ -57,3 +57,7 @@ Route::patch('/employees/update/{employee}','EmployeeController@update')->name('
 Route::post('/employees','EmployeeController@store')->name('employees.store');
 //Route Document
 Route::get('/download/{id}','AssignmentCellphoneEmployeeController@download' )->name('download.acuerdo');
+
+Route::get('/test',function(){
+    return view('/assignments.test');
+});
