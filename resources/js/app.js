@@ -31,6 +31,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
     el: '#app',
 });
  */
+/*
 window.onload = function(){
     alert('hola')
   function allowDrop(ev) {
@@ -47,4 +48,4 @@ window.onload = function(){
     ev.target.appendChild(document.getElementById(data));
   }
 }
-
+*/
